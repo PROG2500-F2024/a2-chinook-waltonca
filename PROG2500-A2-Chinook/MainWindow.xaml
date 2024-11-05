@@ -50,7 +50,36 @@
             </MenuItem>
         </Menu>
         
-        
-        
+        <!--Add a header after the menu-->
+        <TextBlock DockPanel.Dock="Top" Text="Welcome to the Chinook Music Store!" 
+               FontSize="24" FontWeight="Bold" TextAlignment="Center" 
+               Margin="0,10,0,10" />
+
+        <ToolBar DockPanel.Dock="Left">
+            <StackPanel Orientation="Vertical" Width="50">
+                <Button x:Name="HomeButton" ToolTip="Go to Home" Click="HomeButton_Click">
+                    <Image Source="{StaticResource homeImage}"></Image>
+                </Button>
+                <Button x:Name="EmployeesButton" ToolTip="View Employees" Click="ArtistsButton_Click">
+                    <Image Source="{StaticResource artistsImage}"></Image>
+                </Button>
+                <Button x:Name="CustomersButton" ToolTip="View Customers" Click="AlbumButton_Click">
+                    <Image Source="{StaticResource albumsImage}"></Image>
+                </Button>
+                <Button x:Name="ProductsButton" ToolTip="View Products" Click="TracksButton_Click">
+                    <Image Source="{StaticResource tracksImage}"></Image>
+                </Button>
+            </StackPanel>
+        </ToolBar>
+
+        <Frame x:Name="MainFrame" DockPanel.Dock="Bottom" Width="auto" Height="auto" NavigationUIVisibility="Hidden" ></Frame>
+
     </DockPanel>
 </Window>
+
+<!-- Images from 
+    https://www.flaticon.com/free-icon/home_1946436?term=home&page=1&position=3&origin=search&related_id=1946436
+    https://www.flaticon.com/free-icon/teamwork_6462992?term=employees&page=1&position=6&origin=search&related_id=6462992
+    https://www.flaticon.com/free-icon/web_16370021?term=customer&page=1&position=60&origin=search&related_id=16370021
+    https://www.flaticon.com/free-icon/box_679720?term=product&page=1&position=4&origin=search&related_id=679720
+    -->
