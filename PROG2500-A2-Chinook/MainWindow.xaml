@@ -56,7 +56,7 @@
                Margin="0,10,0,10"
                Background="Beige"/>
 
-        <ToolBar DockPanel.Dock="Left">
+        <ToolBar DockPanel.Dock="Left" Background="Bisque">
             <StackPanel Orientation="Vertical" Width="50">
                 <Button x:Name="HomeButton" ToolTip="Go to Home" Click="HomeButton_Click">
                     <Image Source="{StaticResource homeImage}"></Image>
