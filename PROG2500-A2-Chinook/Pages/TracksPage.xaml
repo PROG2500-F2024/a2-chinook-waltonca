@@ -10,24 +10,39 @@
 
     <Page.Resources>
         <CollectionViewSource x:Key="tracksViewSource"></CollectionViewSource>
+        <!-- Styles should be defined as resources  -->
+        <Style x:Key="StackPanelBackgroundStyle" TargetType="StackPanel">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="LightBlue" Offset="0" />
+                        <GradientStop Color="LightGray" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <!-- Add more styles -->
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
     </Page.Resources>
-    
-    <StackPanel>
+
+    <StackPanel >
         <TextBlock Text="Chinook Tracks" FontSize="38"></TextBlock>
         <Expander Header="Data goes here" IsExpanded="True">
             <ScrollViewer Height="400">
                 <ListView ItemsSource="{Binding Source={StaticResource tracksViewSource}}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <StackPanel Orientation="Vertical" Width="550">
-                                    <TextBlock Text="{Binding Name}" ></TextBlock>
+                            <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelBackgroundStyle}">
+                                <StackPanel Orientation="Vertical" Width="650">
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="18"></TextBlock>
                                     <TextBlock>
                                     <Run Text="Composer:" />
                                     <Run Text="{Binding Composer}" />
                                     </TextBlock>
                                 </StackPanel>
-                                <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Vertical" Width="115">
                                     <TextBlock>
                                     <Run Text="Length:" />
                                     <Run Text="{Binding Milliseconds}" />
