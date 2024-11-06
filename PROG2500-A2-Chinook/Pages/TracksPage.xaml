@@ -14,36 +14,40 @@
     
     <StackPanel>
         <TextBlock Text="Chinook Tracks" FontSize="38"></TextBlock>
-        <ListView ItemsSource="{Binding Source={StaticResource tracksViewSource}}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical" Width="550">
-                            <TextBlock Text="{Binding Name}" ></TextBlock>
-                            <TextBlock>
-                                <Run Text="Composer:" />
-                                <Run Text="{Binding Composer}" />
-                            </TextBlock>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock>
-                                <Run Text="Length:" />
-                                <Run Text="{Binding Milliseconds}" />
-                                <Run Text="ms" />
-                            </TextBlock>
-                            <TextBlock>
-                                <Run Text="Size:" />
-                                <Run Text="{Binding Bytes}" />
-                                <Run Text="bytes" />
-                            </TextBlock>
-                            <TextBlock>
-                                <Run Text="Price:$" />
-                                <Run Text="{Binding UnitPrice}" />
-                            </TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Expander Header="Data goes here" IsExpanded="True">
+            <ScrollViewer Height="400">
+                <ListView ItemsSource="{Binding Source={StaticResource tracksViewSource}}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical" Width="550">
+                                    <TextBlock Text="{Binding Name}" ></TextBlock>
+                                    <TextBlock>
+                                    <Run Text="Composer:" />
+                                    <Run Text="{Binding Composer}" />
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock>
+                                    <Run Text="Length:" />
+                                    <Run Text="{Binding Milliseconds}" />
+                                    <Run Text="ms" />
+                                    </TextBlock>
+                                    <TextBlock>
+                                    <Run Text="Size:" />
+                                    <Run Text="{Binding Bytes}" />
+                                    <Run Text="bytes" />
+                                    </TextBlock>
+                                    <TextBlock>
+                                    <Run Text="Price:$" />
+                                    <Run Text="{Binding UnitPrice}" />
+                                    </TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+        </Expander>
     </StackPanel>
 </Page>

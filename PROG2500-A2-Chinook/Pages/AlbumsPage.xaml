@@ -14,7 +14,7 @@
 
     <StackPanel>
         <TextBlock Text="Chinook Albums" FontSize="38"></TextBlock>
-        <ListView ItemsSource="{Binding Source={StaticResource albumsViewSource}}">
+        <ListView ItemsSource="{Binding Source={StaticResource albumsViewSource}}" Height="400">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding AlbumId}" Header="ID" />

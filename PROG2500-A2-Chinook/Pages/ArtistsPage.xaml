@@ -14,7 +14,7 @@
 
     <StackPanel>
         <TextBlock Text="Chinook Artists" FontSize="38"></TextBlock>
-        <DataGrid ItemsSource="{Binding Source={StaticResource artistsViewSource}}" AutoGenerateColumns="False">
+        <DataGrid ItemsSource="{Binding Source={StaticResource artistsViewSource}}" AutoGenerateColumns="False"  Height="400">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ArtistId}" Header="ID"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Artist Name"></DataGridTextColumn>
