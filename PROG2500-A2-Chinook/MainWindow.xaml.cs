@@ -30,7 +30,7 @@ namespace PROG2500_A2_Chinook
             MainFrame.NavigationService.Navigate(new Pages.TracksPage());
         }
 
-        private void AlbumButton_Click(object sender, RoutedEventArgs e)
+        private void AlbumsButton_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.NavigationService.Navigate(new Pages.AlbumsPage());
         }

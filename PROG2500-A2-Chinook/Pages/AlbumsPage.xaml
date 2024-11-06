@@ -14,11 +14,13 @@
 
     <StackPanel>
         <TextBlock Text="Chinook Albums" FontSize="38"></TextBlock>
-        <DataGrid ItemsSource="{Binding Source={StaticResource albumsViewSource}}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding AlbumId}" Header="ID"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Title}" Header="Album Name"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListView ItemsSource="{Binding Source={StaticResource albumsViewSource}}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding AlbumId}" Header="ID" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Album Name" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </StackPanel>
 </Page>
