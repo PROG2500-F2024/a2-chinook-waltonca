@@ -13,7 +13,18 @@
     </Page.Resources>
 
     <StackPanel>
-        <TextBlock Text="Chinook Albums" FontSize="38"></TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <!-- Title -->
+            <TextBlock Text="Chinook Albums" FontSize="38" VerticalAlignment="Center" Margin="0,0,10,0" />
+
+            <!-- Search Bar -->
+            <StackPanel Width="Auto" HorizontalAlignment="Right" Orientation="Horizontal">
+                <TextBlock Text="Search Albums: " VerticalAlignment="Center" Margin="10,0,5,0" />
+                <TextBox x:Name="textSearch" Width="200"  Margin="0,0,5,0" />
+                <Button x:Name="btnSearch" Content="Search" Width="75"  Click="btnSearch_Click"/>
+            </StackPanel>
+        </StackPanel>
+        
         <ListView ItemsSource="{Binding Source={StaticResource albumsViewSource}}" Height="400">
             <ListView.View>
                 <GridView>
