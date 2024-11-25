@@ -37,5 +37,21 @@ namespace PROG2500_A2_Chinook.Pages
             // Set the viewsource data source to use the Products data collection (dbset)
             tracksViewSource.Source = context.Tracks.Local.ToObservableCollection();
         }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string searchText = textSearch.Text.Trim();
+
+            // USE LINQ
+            // Define the query
+            var query = from track in context.Tracks
+                        where track.Name.Contains(searchText)
+                        orderby track.TrackId
+                        select track;
+
+
+            // Execute the query
+            tracksViewSource.Source = query.ToList();
+        }
     }
 }
