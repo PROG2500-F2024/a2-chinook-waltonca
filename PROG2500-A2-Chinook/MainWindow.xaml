@@ -14,6 +14,7 @@
             <BitmapImage x:Key="artistsImage" UriSource="/images/artists.png"></BitmapImage>
             <BitmapImage x:Key="albumsImage" UriSource="/images/albums.png"></BitmapImage>
             <BitmapImage x:Key="tracksImage" UriSource="/images/tracks.png"></BitmapImage>
+            <BitmapImage x:Key="musicCatalogImage" UriSource="/images/musicCatalog.png"></BitmapImage>
         </ResourceDictionary>
     </Window.Resources>
     
@@ -47,6 +48,11 @@
                         <Image Source="{StaticResource tracksImage}"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem x:Name="MusicCatalog" Header="_View MusicCatalog" Click="MusicCatalogButton_Click">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource musicCatalogImage}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </Menu>
         
@@ -69,6 +75,9 @@
                 </Button>
                 <Button x:Name="TracksButton" ToolTip="View All Tracks" Click="TracksButton_Click">
                     <Image Source="{StaticResource tracksImage}"></Image>
+                </Button>
+                <Button x:Name="MusicCatalogButton" ToolTip="View All Music Catalog" Click="MusicCatalogButton_Click">
+                    <Image Source="{StaticResource musicCatalogImage}"></Image>
                 </Button>
             </StackPanel>
         </ToolBar>
