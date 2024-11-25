@@ -8,6 +8,10 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CustomerOrdersPage">
 
+    <Page.Resources>
+        <CollectionViewSource x:Key="customerOrdersViewSource"></CollectionViewSource>
+    </Page.Resources>
+    
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
             <!-- Title -->
@@ -20,6 +24,41 @@
                 <Button x:Name="btnSearch" Content="Search" Width="75"  Click="btnSearch_Click"/>
             </StackPanel>
         </StackPanel>
+        <!-- Top-level listview is for customers -->
+        <ListView x:Name="customerOrdersListVew" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Height="400">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Width="650">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding LastName}" FontWeight="Bold" FontSize="18"></TextBlock>
+                                <TextBlock Text="{Binding FirstName}" FontWeight="Bold" FontSize="18"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding City}" FontWeight="Bold" FontSize="18"></TextBlock>
+                                <TextBlock Text="{Binding State}" FontWeight="Bold" FontSize="18"></TextBlock>
+                            </StackPanel>
+                            <TextBlock Text="{Binding Country}" FontWeight="Bold" FontSize="18"></TextBlock>
+                            <TextBlock Text="{Binding Email}" FontWeight="Bold" FontSize="18"></TextBlock>
+                        </StackPanel>
+                        <StackPanel>
+                            <!-- Second-level listview is for the invoices -->
+                            <!--<Expander Header="View Invoice(s)">
+                                <ListView ItemsSource="{Binding artist}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Name}"></TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Expander>-->
+                            
+                        </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </StackPanel>
 </Page>
