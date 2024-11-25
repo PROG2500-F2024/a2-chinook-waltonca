@@ -13,7 +13,17 @@
     </Page.Resources>
 
     <StackPanel>
-        <TextBlock Text="Chinook Artists" FontSize="38"></TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <!-- Title -->
+            <TextBlock Text="Chinook Artists" FontSize="38" VerticalAlignment="Center" Margin="0,0,10,0" />
+
+            <!-- Search Bar -->
+            <StackPanel Width="Auto" HorizontalAlignment="Right" Orientation="Horizontal">
+                <TextBlock Text="Search Artists: " VerticalAlignment="Center" Margin="10,0,5,0" />
+                <TextBox x:Name="textSearch" Width="200"  Margin="0,0,5,0" />
+                <Button x:Name="btnSearch" Content="Search" Width="75"  Click="btnSearch_Click"/>
+            </StackPanel>
+        </StackPanel>
         <DataGrid ItemsSource="{Binding Source={StaticResource artistsViewSource}}" AutoGenerateColumns="False"  Height="400">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ArtistId}" Header="ID"></DataGridTextColumn>

@@ -38,5 +38,23 @@ namespace PROG2500_A2_Chinook.Pages
             // Set the viewsource data source to use the Products data collection (dbset)
             artistsViewSource.Source = context.Artists.Local.ToObservableCollection();
         }
+
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string searchText = textSearch.Text.Trim();
+
+            // USE LINQ
+            // Define the query
+            var query = from artist in context.Artists
+                        where artist.Name.Contains(searchText)
+                        orderby artist.ArtistId
+                        select artist;
+
+
+            // Execute the query
+            artistsViewSource.Source = query.ToList();
+
+        }
     }
 }
