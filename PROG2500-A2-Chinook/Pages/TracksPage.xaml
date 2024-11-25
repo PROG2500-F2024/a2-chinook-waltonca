@@ -54,8 +54,7 @@
                                     <Run Text="bytes" />
                                     </TextBlock>
                                     <TextBlock>
-                                    <Run Text="Price:$" />
-                                    <Run Text="{Binding UnitPrice}" />
+                                    <Run Text="{Binding FormattedPrice, Mode=OneWay}" />
                                     </TextBlock>
                                 </StackPanel>
                             </StackPanel>
