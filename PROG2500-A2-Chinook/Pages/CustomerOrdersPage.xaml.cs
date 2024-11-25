@@ -44,7 +44,17 @@ namespace PROG2500_A2_Chinook.Pages
             var query =
                 from customer in _context.Customers
                 where customer.LastName.Contains(textSearch.Text) //Search for the last name of the customer, I didn't search for the first name.
-                select customer;
+                orderby customer.LastName
+                select new
+                {
+                    LastName = customer.LastName,
+                    FirstName = customer.FirstName,
+                    City = customer.City,
+                    State = customer.State,
+                    Country = customer.Country,
+                    Email = customer.Email,
+                    Invoices = customer.Invoices.ToList<Invoice>()
+                };
 
             //Execture the query against the db and assign it as the data source for the listview
             customerOrdersListVew.ItemsSource = query.ToList();

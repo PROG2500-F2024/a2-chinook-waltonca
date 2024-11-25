@@ -29,7 +29,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical" Width="650">
+                        <StackPanel Orientation="Vertical" Width="300">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding LastName}" FontWeight="Bold" FontSize="18"></TextBlock>
                                 <TextBlock Text="{Binding FirstName}" FontWeight="Bold" FontSize="18"></TextBlock>
@@ -43,19 +43,35 @@
                         </StackPanel>
                         <StackPanel>
                             <!-- Second-level listview is for the invoices -->
-                            <!--<Expander Header="View Invoice(s)">
-                                <ListView ItemsSource="{Binding artist}">
+                            <Expander Header="View Invoice(s)">
+                                <ListView ItemsSource="{Binding Invoices}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Name}"></TextBlock>
+                                                <TextBlock>
+                                                    <Run Text="Order Date: " />
+                                                    <Run Text="{Binding InvoiceDate, StringFormat={}{0:yyyy-MM-dd}}" />
+                                                    <Run Text=" Total: $" />
+                                                    <Run Text="{Binding Total, StringFormat={}{0:C}}" />
+                                                </TextBlock>
+                                                <!-- Thrid-level listview is for the invoiceline -->
+                                                <ListView ItemsSource="{Binding InvoiceLines}">
+                                                    <ListView.ItemTemplate>
+                                                        <DataTemplate DataType="local:InvoiceLines">
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock Text="{Binding Quantity}"></TextBlock>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </ListView.ItemTemplate>
+                                                </ListView>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-                            </Expander>-->
-                            
+                            </Expander>
+
                         </StackPanel>
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
