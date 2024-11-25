@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PROG2500_A2_Chinook.Pages
 {
     /// <summary>
-    /// Interaction logic for CustomerOrderPage.xaml
+    /// Interaction logic for CustomerOrdersPage.xaml
     /// </summary>
-    public partial class CustomerOrderPage : Page
+    public partial class CustomerOrdersPage : Page
     {
-        public CustomerOrderPage()
+        public CustomerOrdersPage()
         {
             InitializeComponent();
         }

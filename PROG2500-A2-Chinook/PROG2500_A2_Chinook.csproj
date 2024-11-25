@@ -11,10 +11,17 @@
   <ItemGroup>
     <None Remove="Images\albums.png" />
     <None Remove="Images\artists.png" />
+    <None Remove="Images\customerOrders.png" />
     <None Remove="Images\exit.png" />
     <None Remove="Images\home.png" />
     <None Remove="Images\musicCatalog.png" />
     <None Remove="Images\tracks.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\customerOrders.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

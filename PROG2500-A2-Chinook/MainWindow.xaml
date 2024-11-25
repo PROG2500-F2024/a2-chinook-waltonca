@@ -15,6 +15,7 @@
             <BitmapImage x:Key="albumsImage" UriSource="/images/albums.png"></BitmapImage>
             <BitmapImage x:Key="tracksImage" UriSource="/images/tracks.png"></BitmapImage>
             <BitmapImage x:Key="musicCatalogImage" UriSource="/images/musicCatalog.png"></BitmapImage>
+            <BitmapImage x:Key="customerOrdersImage" UriSource="/images/customerOrders.png"></BitmapImage>
         </ResourceDictionary>
     </Window.Resources>
     
@@ -53,6 +54,11 @@
                         <Image Source="{StaticResource musicCatalogImage}"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem x:Name="customerOrders" Header="_View Customer Orders" Click="CustomerOrdersButton_Click">
+                    <MenuItem.Icon>
+                        <Image Source="{StaticResource customerOrdersImage}"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </Menu>
         
@@ -79,6 +85,9 @@
                 <Button x:Name="MusicCatalogButton" ToolTip="View All Music Catalog" Click="MusicCatalogButton_Click">
                     <Image Source="{StaticResource musicCatalogImage}"></Image>
                 </Button>
+                <Button x:Name="CustomerOrdersgButton" ToolTip="View All Customer Orders" Click="CustomerOrdersButton_Click">
+                    <Image Source="{StaticResource customerOrdersImage}"></Image>
+                </Button>
             </StackPanel>
         </ToolBar>
 
@@ -92,4 +101,6 @@
     https://www.flaticon.com/free-icon/artist_2740606?term=music+artist&page=1&position=13&origin=search&related_id=2740606
     https://www.flaticon.com/free-icon/music-track_1389465?term=music+tracks&page=1&position=4&origin=search&related_id=1389465
     https://www.flaticon.com/free-icon/reject_5368396?term=exit&page=1&position=7&origin=search&related_id=5368396
+    https://www.flaticon.com/free-icon/music-folder_11223150?term=music+catalog&page=1&position=1&origin=search&related_id=11223150
+    https://www.flaticon.com/free-icon/order_2104108?term=customer+order&page=1&position=12&origin=search&related_id=2104108
     -->
