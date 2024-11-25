@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PROG2500_A2_Chinook.Data;
+using PROG2500_A2_Chinook.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,8 @@ namespace PROG2500_A2_Chinook.Pages
 
             //Load data from the database
             _context.Artists.Load();
+            _context.Albums.Load();
+            _context.Tracks.Load();
 
             musicCatalogViewSource.Source = _context.Artists.Local.ToObservableCollection();
 
@@ -44,7 +47,13 @@ namespace PROG2500_A2_Chinook.Pages
             var query =
                 from artist in _context.Artists
                 where artist.Name.Contains(textSearch.Text)
-                select artist;
+                group artist by artist.Name.ToUpper().Substring(0,1) into artistGroup
+                select new 
+                { 
+                    Index = artistGroup.Key,
+                    ArtCount = artistGroup.Count().ToString(),
+                    artist = artistGroup.ToList<Artist>()
+                };
 
             //Execture the query against the db and assign it as the data source for the listview
             musicCatalogListVew.ItemsSource = query.ToList();

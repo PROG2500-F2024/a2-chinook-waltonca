@@ -24,13 +24,50 @@
                 <Button x:Name="btnSearch" Content="Search" Width="75"  Click="btnSearch_Click"/>
             </StackPanel>
         </StackPanel>
-
+        <!-- Top-level listview is for the GROUPED artists (by first letter)-->
         <ListView x:Name="musicCatalogListVew" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Height="400">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="18"></TextBlock>
+                        <TextBlock Text="{Binding Index}" FontWeight="Bold" FontSize="18"></TextBlock>
+                        <TextBlock Text="{Binding ArtCount}" FontWeight="Bold" FontSize="18"></TextBlock>
 
+                        <!-- Second-level listview is for the GROUPED Artist-->
+                        <Expander Header="View Artist(s)">
+                            <ListView ItemsSource="{Binding artist}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}"></TextBlock>
+                                            <!-- Third-level listview is for the albums -->
+                                            <Expander Header="View Album(s)">
+                                                <ListView ItemsSource="{Binding Albums}">
+                                                    <ListView.ItemTemplate>
+                                                        <DataTemplate DataType="local:Albums">
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock Text="{Binding Title}"></TextBlock>
+                                                                <!-- Fourth-level listview is for the tracks -->
+                                                                <Expander Header="View Track(s)">
+                                                                    <ListView ItemsSource="{Binding Tracks}">
+                                                                        <ListView.ItemTemplate>
+                                                                            <DataTemplate DataType="local:Tracks">
+                                                                                <StackPanel Orientation="Horizontal">
+                                                                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                                                                </StackPanel>
+                                                                            </DataTemplate>
+                                                                        </ListView.ItemTemplate>
+                                                                    </ListView>
+                                                                </Expander>
+                                                            </StackPanel>
+                                                        </DataTemplate>
+                                                    </ListView.ItemTemplate>
+                                                </ListView>
+                                            </Expander>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Expander>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
