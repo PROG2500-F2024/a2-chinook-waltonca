@@ -10,6 +10,12 @@
 
     <Page.Resources>
         <CollectionViewSource x:Key="musicCatalogViewSource"></CollectionViewSource>
+        <!-- Define the gradient brush in resources -->
+        <LinearGradientBrush x:Key="GradientBackground" StartPoint="0,0" EndPoint="0,1">
+            <!-- Gradient from top to bottom -->
+            <GradientStop Color="LightSkyBlue" Offset="0"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
     </Page.Resources>
 
     <StackPanel>
@@ -25,34 +31,42 @@
             </StackPanel>
         </StackPanel>
         <!-- Top-level listview is for the GROUPED artists (by first letter)-->
-        <ListView x:Name="musicCatalogListVew" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Height="400">
+        <ListView x:Name="musicCatalogListVew" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Height="400" Background="{StaticResource GradientBackground}" BorderBrush="Black" 
+                  BorderThickness="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Index}" FontWeight="Bold" FontSize="18"></TextBlock>
-                        <TextBlock Text="{Binding ArtCount}" FontWeight="Bold" FontSize="18"></TextBlock>
+                        <TextBlock Text="{Binding Index}" FontWeight="Bold" FontSize="20"></TextBlock>
+                        <TextBlock FontWeight="Normal" FontSize="15">
+                            <Run Text="(" />
+                            <Run Text="{Binding ArtCount,Mode=OneWay}" />
+                            <Run Text=")" />
+                        </TextBlock>
 
                         <!-- Second-level listview is for the GROUPED Artist-->
                         <Expander Header="View Artist(s)">
-                            <ListView ItemsSource="{Binding artist}">
+                            <ListView ItemsSource="{Binding artist}" Background="{StaticResource GradientBackground}" BorderBrush="Black" 
+                  BorderThickness="2">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Name}"></TextBlock>
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold"></TextBlock>
                                             <!-- Third-level listview is for the albums -->
                                             <Expander Header="View Album(s)">
-                                                <ListView ItemsSource="{Binding Albums}">
+                                                <ListView ItemsSource="{Binding Albums}" Background="{StaticResource GradientBackground}" BorderBrush="Black" 
+                  BorderThickness="2" >
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate DataType="local:Albums">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <TextBlock Text="{Binding Title}"></TextBlock>
+                                                                <TextBlock Text="{Binding Title}" FontWeight="Bold"></TextBlock>
                                                                 <!-- Fourth-level listview is for the tracks -->
                                                                 <Expander Header="View Track(s)">
-                                                                    <ListView ItemsSource="{Binding Tracks}">
+                                                                    <ListView ItemsSource="{Binding Tracks}" Background="{StaticResource GradientBackground}" BorderBrush="Black" 
+                  BorderThickness="2">
                                                                         <ListView.ItemTemplate>
                                                                             <DataTemplate DataType="local:Tracks">
                                                                                 <StackPanel Orientation="Horizontal">
-                                                                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold"></TextBlock>
                                                                                 </StackPanel>
                                                                             </DataTemplate>
                                                                         </ListView.ItemTemplate>

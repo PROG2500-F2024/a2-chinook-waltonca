@@ -10,6 +10,12 @@
 
     <Page.Resources>
         <CollectionViewSource x:Key="customerOrdersViewSource"></CollectionViewSource>
+        <!-- Define the gradient brush in resources -->
+        <LinearGradientBrush x:Key="GradientBackground" StartPoint="0,0" EndPoint="0,1">
+            <!-- Gradient from top to bottom -->
+            <GradientStop Color="LightSkyBlue" Offset="0"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
     </Page.Resources>
     
     <StackPanel>
@@ -25,48 +31,54 @@
             </StackPanel>
         </StackPanel>
         <!-- Top-level listview is for customers -->
-        <ListView x:Name="customerOrdersListVew" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Height="400">
+        <ListView x:Name="customerOrdersListVew" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Height="400"  Background="{StaticResource GradientBackground}" BorderBrush="Black" 
+                  BorderThickness="2">
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical" Width="300">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding FullName}" FontWeight="Bold" FontSize="18"></TextBlock>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding City}" FontWeight="Bold" FontSize="18"></TextBlock>
-                                <TextBlock Text="{Binding State}" FontWeight="Bold" FontSize="18"></TextBlock>
-                            </StackPanel>
-                            <TextBlock Text="{Binding Country}" FontWeight="Bold" FontSize="18"></TextBlock>
-                            <TextBlock Text="{Binding Email}" FontWeight="Bold" FontSize="18"></TextBlock>
-                        </StackPanel>
-                        <StackPanel>
-                            <!-- Second-level listview is for the invoices -->
-                            <Expander Header="View Invoice(s)">
-                                <ListView ItemsSource="{Binding Invoices}">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate DataType="local:Invoices">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock>
-                                            <Run Text="Order Date: " />
+                <DataTemplate >
+                    <Border Background="{StaticResource GradientBackground}" BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Stretch" Width="770">
+                        <Grid HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                <StackPanel Orientation="Vertical" Width="300">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding FullName}" FontWeight="Bold" FontSize="18"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding City}"  FontSize="18"></TextBlock>
+                                        <TextBlock Text="{Binding State}"  FontSize="18"></TextBlock>
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding Country}"  FontSize="18"></TextBlock>
+                                    <TextBlock Text="{Binding Email}"  FontSize="18"></TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <!-- Second-level listview is for the invoices -->
+                                    <Expander Header="View Invoice(s)">
+                                        <ListView ItemsSource="{Binding Invoices}"  Background="{StaticResource GradientBackground}" BorderBrush="Black" 
+                  BorderThickness="2">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate DataType="local:Invoices">
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                                        <TextBlock>
+                                            <Run Text="Order Date: " FontWeight="Bold"/>
                                             <!-- Make sure it's only one-way binding -->
-                                            <Run Text="{Binding InvoiceDate, Mode=OneWay, StringFormat={}{0:yyyy-MM-dd}}" />
+                                            <Run Text="{Binding InvoiceDate, Mode=OneWay, StringFormat={}{0:yyyy-MM-dd}}" FontWeight="Bold" />
                                             <Run Text=" Total: $" />
                                             <Run Text="{Binding Total, Mode=OneWay, StringFormat={}{0:C}}" />
-                                                </TextBlock>
-                                                <!-- Show TotalQuantity instead of individual quantity -->
-                                                <TextBlock>
+                                                        </TextBlock>
+                                                        <!-- Show TotalQuantity instead of individual quantity -->
+                                                        <TextBlock>
                                             <Run Text="Quantity: " />
                                             <Run Text="{Binding TotalQuantity, Mode=OneWay}" />
-                                                </TextBlock>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </Expander>
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </Expander>
 
-                        </StackPanel>
-                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
