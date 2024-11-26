@@ -34,6 +34,7 @@ namespace PROG2500_A2_Chinook.Pages
             //Load data from the database
             _context.Customers.Load();
             _context.Invoices.Load();
+            _context.InvoiceLines.Load();
 
             customerOrdersViewSource.Source = _context.Customers.Local.ToObservableCollection();
         }
@@ -47,12 +48,12 @@ namespace PROG2500_A2_Chinook.Pages
                 orderby customer.LastName
                 select new
                 {
-                    LastName = customer.LastName,
-                    FirstName = customer.FirstName,
+                    FullName = customer.FullName,
                     City = customer.City,
                     State = customer.State,
                     Country = customer.Country,
                     Email = customer.Email,
+                    // Load invoices
                     Invoices = customer.Invoices.ToList<Invoice>()
                 };
 

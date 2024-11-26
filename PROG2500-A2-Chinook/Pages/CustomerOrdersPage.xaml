@@ -31,8 +31,7 @@
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Vertical" Width="300">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding LastName}" FontWeight="Bold" FontSize="18"></TextBlock>
-                                <TextBlock Text="{Binding FirstName}" FontWeight="Bold" FontSize="18"></TextBlock>
+                                <TextBlock Text="{Binding FullName}" FontWeight="Bold" FontSize="18"></TextBlock>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding City}" FontWeight="Bold" FontSize="18"></TextBlock>
@@ -46,7 +45,7 @@
                             <Expander Header="View Invoice(s)">
                                 <ListView ItemsSource="{Binding Invoices}">
                                     <ListView.ItemTemplate>
-                                        <DataTemplate>
+                                        <DataTemplate DataType="local:Invoices">
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock>
                                                     <Run Text="Order Date: " />
@@ -57,7 +56,7 @@
                                                 <!-- Thrid-level listview is for the invoiceline -->
                                                 <ListView ItemsSource="{Binding InvoiceLines}">
                                                     <ListView.ItemTemplate>
-                                                        <DataTemplate DataType="local:InvoiceLines">
+                                                        <DataTemplate DataType="local:InoiceLines">
                                                             <StackPanel Orientation="Horizontal">
                                                                 <TextBlock Text="{Binding Quantity}"></TextBlock>
                                                             </StackPanel>
